@@ -1,5 +1,5 @@
 import { Consumer, createConsumer } from "@rails/actioncable";
-import { Message } from "@/types/message";
+import { Message } from "@/types/Message";
 
 let cable: Consumer | null = null;
 

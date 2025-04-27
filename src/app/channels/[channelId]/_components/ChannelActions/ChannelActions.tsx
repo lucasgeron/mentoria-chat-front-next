@@ -6,16 +6,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { EllipsisVerticalIcon } from "./ui/icons/EllipsisVerticalIcon";
-import { Button } from "./ui/button";
+import { EllipsisVerticalIcon } from "@/components/ui/icons/EllipsisVerticalIcon";
+import { Button } from "@/components/ui/button";
+import { ChannelAction } from "@/app/channels/[channelId]/_components/Room/types";
 
-interface DropdownMenuOptionsProps {
-  options?: {label: string; action: () => void}[] | null;
+interface ChannelActions {
+  actions?: ChannelAction[] | null;
 }
 
-export const DropdownMenuOptions = ({ options }: DropdownMenuOptionsProps) => {
+export const ChannelActions = ({ actions }: ChannelActions) => {
 
-  if (!options || options.length === 0) {
+  if (!actions || actions.length === 0) {
     return null;
   }
 
@@ -28,7 +29,7 @@ export const DropdownMenuOptions = ({ options }: DropdownMenuOptionsProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" side="top">
        <DropdownMenuGroup>
-        {options.map(({ label, action }, index) => (
+        {actions.map(({ label, action }, index) => (
           <DropdownMenuItem key={index} onClick={action}>
             {label}
           </DropdownMenuItem>

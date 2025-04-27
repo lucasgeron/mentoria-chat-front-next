@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 
 import { Button } from "@/components/ui/button"
-import { DropdownMenuOptions } from "./DropdownMenuOptions";
+import { ChannelActions } from "@/app/channels/[channelId]/_components/ChannelActions/ChannelActions";
 import { toast } from "sonner"
-import { PaperAirplaneIcon } from "./ui/icons/PaperAirplaneIcon";
+import { PaperAirplaneIcon } from "@/components/ui/icons/PaperAirplaneIcon";
+import { ChannelAction } from "@/app/channels/[channelId]/_components/Room/types";
 
 interface MessageInputProps {
   author: string;
   channelId: string;
-  options?: {label: string; action: () => void}[] | null;
+  actions?: ChannelAction[];
 }
 
-export const MessageInput = ({ author, channelId, options }: MessageInputProps) => {
+export const MessageInput = ({ author, channelId, actions }: MessageInputProps) => {
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState<Record<string, string[]>>({});
 
@@ -56,7 +57,8 @@ export const MessageInput = ({ author, channelId, options }: MessageInputProps) 
     <div className="relative">
       <form onSubmit={sendMessage} className="flex gap-2">
         <input
-          autoFocus
+          autoFocus={true}
+          autoComplete="off"
           type="text"
           placeholder="Type your message here..."
           name="content"
@@ -65,7 +67,7 @@ export const MessageInput = ({ author, channelId, options }: MessageInputProps) 
           className="bg-gray-800 text-white py-2 px-4 w-full rounded-lg text-sm ring-0 outline-none focus:ring-0"
         />
 
-        <DropdownMenuOptions options={options} />
+        <ChannelActions actions={actions} />
 
         {/* To test error toasts, remove the "disabled" prop from the button */}
         <Button disabled={!content}><PaperAirplaneIcon /></Button> 

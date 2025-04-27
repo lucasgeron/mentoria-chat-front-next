@@ -38,8 +38,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 ## TODOS
+✅Add `/rooms` to list all rooms
+✅Add Tags, and Number of users in Room details (on lobby and inside room)
+Add Save Name for next time
 Add Random color to usernames
 Add Random avatar to subscribers
 Add Types to Messages (ServerInfo | Default )
-Add `/rooms` to list all rooms
-Add Tags, and Number of users in Room details (on lobby and inside room)
+Add List of Users in Room
