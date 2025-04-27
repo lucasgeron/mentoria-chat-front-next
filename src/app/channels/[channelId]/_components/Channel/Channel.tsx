@@ -6,14 +6,14 @@ import { Consumer, Mixin, Subscription } from "@rails/actioncable";
 import { useEffect, useState } from "react";
 import { useChannelActions } from "./hooks";
 
-interface RoomProps {
+interface ChannelProps {
   author: string
   channelId: string
 }
 
-export const Room = ({ author, channelId }: RoomProps) => { 
+export const Channel = ({ author, channelId }: ChannelProps) => { 
   const [messages, setMessages] = useState<Message[]>([]);
-  const { actions } = useChannelActions();
+  const { actions } = useChannelActions({author});
   
   useEffect(() => {
     let subscription: Subscription<Consumer> & Mixin & { connected(): void; disconnected(): void; received(data: Message): void; }

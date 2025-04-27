@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { EllipsisVerticalIcon } from "@/components/ui/icons/EllipsisVerticalIcon";
 import { Button } from "@/components/ui/button";
-import { ChannelAction } from "@/app/channels/[channelId]/_components/Room/types";
+import { ChannelAction } from "@/app/channels/[channelId]/_components/Channel/types";
 
 interface ChannelActions {
   actions?: ChannelAction[] | null;
@@ -24,7 +24,7 @@ export const ChannelActions = ({ actions, context }: ChannelActions) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost">
+        <Button variant="ghost" size={"icon"}>
           <EllipsisVerticalIcon />
         </Button>
       </DropdownMenuTrigger>
@@ -38,6 +38,7 @@ export const ChannelActions = ({ actions, context }: ChannelActions) => {
           )
         ))}
        </DropdownMenuGroup>
+       {}
       </DropdownMenuContent>
     </DropdownMenu>
   );

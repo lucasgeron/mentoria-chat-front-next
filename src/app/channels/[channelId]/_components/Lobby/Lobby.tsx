@@ -3,21 +3,25 @@ import { Button } from "@/components/ui/button";
 import { ArrowRightEndOnRectangleIcon } from "@/components/ui/icons/ArrowRightEndOnRectangleIcon";
 import { toast } from "sonner";
 import { ChannelActions } from "@/app/channels/[channelId]/_components/ChannelActions";
-import { useChannelActions } from "../Room/hooks";
+import { useChannelActions } from "../Channel/hooks";
 
 interface LobbyProps {
-  onJoinRoom: (author: string) => void;
+  onJoinChannel: (author: string) => void;
   hideActions?: boolean
 }
 
-export const Lobby = ({ onJoinRoom, hideActions }: LobbyProps) => {
+export const Lobby = ({ onJoinChannel, hideActions }: LobbyProps) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const { actions} = useChannelActions();
-
-  const joinRoom = () => { 
-    onJoinRoom(inputValue);
-    toast.success(`You have joined as ${inputValue}!`);
-   }
+  const { actions } = useChannelActions();
+  
+  const joinRoom = () => {
+    if(inputValue.trim() !== "") {
+      onJoinChannel(inputValue);
+      toast.success(`You have joined as ${inputValue}!`);
+    } else {
+      toast.error("Please enter a name to join the channel.");
+    }
+  }
 
   return (
     <div className="flex gap-2 ">
@@ -30,10 +34,12 @@ export const Lobby = ({ onJoinRoom, hideActions }: LobbyProps) => {
         onKeyDown={(e) => e.key === 'Enter' && joinRoom()}
         className="bg-gray-800 text-white py-2 px-4 w-full rounded-lg text-sm ring-0 outline-none focus:ring-0"
       />
-      
-      {!hideActions && <ChannelActions context={['lobby']} actions={actions} />}
 
-      <Button disabled={!inputValue} onClick={joinRoom}><ArrowRightEndOnRectangleIcon /></Button>
+      {!hideActions && <ChannelActions context={["lobby"]} actions={actions} />}
+
+      <Button disabled={!inputValue} onClick={joinRoom} size={"icon"}>
+        <ArrowRightEndOnRectangleIcon />
+      </Button>
     </div>
-  )
-}
+  );
+};

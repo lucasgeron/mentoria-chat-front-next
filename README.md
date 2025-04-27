@@ -38,11 +38,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 ## TODOS
-✅Add `/rooms` to list all rooms
+✅Add `/channels` to list all channels
 ✅Add Tags, and Number of users in Room details (on lobby and inside room)
-Add Save Name for next time
+✅Add Filter to Channels by Tags
+✅Add Save Name for next time
+✅Add Filter to Channels by Name
+Add Filter to Channels by Number of users
 Add Random color to usernames
 Add Random avatar to subscribers
 Add Types to Messages (ServerInfo | Default )
 Add List of Users in Room
-Add Separator between ChannelActions based on 'context'
+Add Validation for unique usernames subscriptions by room (avoid 2 users with the same name in the same room)
+Customize the UI to sent messages be displayed on right, and received messages on left (same as WhatsApp/Discord/Others)
+Add a "typing..." indicator
