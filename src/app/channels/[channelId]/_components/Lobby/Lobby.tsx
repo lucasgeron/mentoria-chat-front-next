@@ -31,7 +31,7 @@ export const Lobby = ({ onJoinRoom, hideActions }: LobbyProps) => {
         className="bg-gray-800 text-white py-2 px-4 w-full rounded-lg text-sm ring-0 outline-none focus:ring-0"
       />
       
-      {!hideActions && <ChannelActions actions={actions} />}
+      {!hideActions && <ChannelActions context={['lobby']} actions={actions} />}
 
       <Button disabled={!inputValue} onClick={joinRoom}><ArrowRightEndOnRectangleIcon /></Button>
     </div>

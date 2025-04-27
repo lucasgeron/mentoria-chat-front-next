@@ -67,7 +67,7 @@ export const MessageInput = ({ author, channelId, actions }: MessageInputProps) 
           className="bg-gray-800 text-white py-2 px-4 w-full rounded-lg text-sm ring-0 outline-none focus:ring-0"
         />
 
-        <ChannelActions actions={actions} />
+        <ChannelActions context={['room']} actions={actions} />
 
         {/* To test error toasts, remove the "disabled" prop from the button */}
         <Button disabled={!content}><PaperAirplaneIcon /></Button> 

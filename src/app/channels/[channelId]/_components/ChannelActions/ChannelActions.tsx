@@ -12,11 +12,12 @@ import { ChannelAction } from "@/app/channels/[channelId]/_components/Room/types
 
 interface ChannelActions {
   actions?: ChannelAction[] | null;
+  context: string[];
 }
 
-export const ChannelActions = ({ actions }: ChannelActions) => {
+export const ChannelActions = ({ actions, context }: ChannelActions) => {
 
-  if (!actions || actions.length === 0) {
+  if (!actions || actions.length === 0 || actions.every(({ context: actionContext }) => actionContext?.every(ctx => !context.includes(ctx)))) {
     return null;
   }
 
@@ -29,10 +30,12 @@ export const ChannelActions = ({ actions }: ChannelActions) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" side="top">
        <DropdownMenuGroup>
-        {actions.map(({ label, action }, index) => (
-          <DropdownMenuItem key={index} onClick={action}>
-            {label}
-          </DropdownMenuItem>
+        {actions.map(({ label, action, context: actionContext }, index) => (
+          actionContext?.some(ctx => context.includes(ctx)) && (
+            <DropdownMenuItem key={index} onClick={action}>
+              {label}
+            </DropdownMenuItem>
+          )
         ))}
        </DropdownMenuGroup>
       </DropdownMenuContent>

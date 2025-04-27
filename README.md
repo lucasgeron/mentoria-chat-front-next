@@ -45,3 +45,4 @@ Add Random color to usernames
 Add Random avatar to subscribers
 Add Types to Messages (ServerInfo | Default )
 Add List of Users in Room
+Add Separator between ChannelActions based on 'context'
