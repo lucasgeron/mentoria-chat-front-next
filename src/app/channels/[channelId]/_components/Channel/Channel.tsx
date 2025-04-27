@@ -13,7 +13,7 @@ interface ChannelProps {
 
 export const Channel = ({ author, channelId }: ChannelProps) => { 
   const [messages, setMessages] = useState<Message[]>([]);
-  const { actions } = useChannelActions({author});
+  const { actions } = useChannelActions();
   
   useEffect(() => {
     let subscription: Subscription<Consumer> & Mixin & { connected(): void; disconnected(): void; received(data: Message): void; }

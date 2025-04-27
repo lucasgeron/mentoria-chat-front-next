@@ -44,7 +44,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ✅Add Save Name for next time
 ✅Add Filter to Channels by Name
 Add Filter to Channels by Number of users
-Add Random color to usernames
+Add Random color to usernames (needs to be unique for each user, does not require to be the same across the users) | REVIEW: Change this to a user setting.
+Add Colors to Tags
+Update the UI to make Channels have the background color of the tag
 Add Random avatar to subscribers
 Add Types to Messages (ServerInfo | Default )
 Add List of Users in Room
