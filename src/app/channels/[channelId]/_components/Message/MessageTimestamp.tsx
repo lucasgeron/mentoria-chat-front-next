@@ -17,5 +17,9 @@ export const MessageTimestamp = ({ children }: MessageTimestampProps) => {
     }
   };
 
-  return <span className={cn(getTimestampStyle(), "text-xs self-baseline mt-1")}>{children}</span>;
-};
+  return (
+    <div className={cn(getTimestampStyle(), "text-xs h-6 self-end flex items-center")}>
+      {children}
+    </div>
+  )
+}

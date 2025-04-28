@@ -21,10 +21,10 @@ export const MessageAuthor = ({ children }: MessageAuthorProps) => {
 
   return (
     <div className={cn(getAuthorStyle())}>
-      <div className="flex gap-1 items-center pr-2">
+      <div className="flex gap-1 items-center pr-2 h-6">
         {variant === "server" && <ShieldCheckIcon />}
         {variant === "client" && <UserCircleIcon />}
-        <div className="self-baseline-last">{children}</div>
+       {children}
       </div>
     </div>
   );
