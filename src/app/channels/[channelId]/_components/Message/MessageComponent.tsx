@@ -8,7 +8,7 @@ export interface MessageComponentProps {
   children: React.ReactNode;
 }
 
-export const MessageComponent  = ({ children }: MessageComponentProps) => {
+export const MessageComponent  = ({ children }: MessageComponentProps ) => {
   const variant = useMessageVariant();
   
   const getMessageComponentStyle = () => {
@@ -16,8 +16,6 @@ export const MessageComponent  = ({ children }: MessageComponentProps) => {
       case "client":
         return "bg-gray-900";
       case "server":
-        return "bg-gray-950";
-      default:
         return "bg-gray-950";
     }
   };

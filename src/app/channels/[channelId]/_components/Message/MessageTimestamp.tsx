@@ -14,8 +14,6 @@ export const MessageTimestamp = ({ children }: MessageTimestampProps) => {
         return "text-gray-500";
       case "server":
         return "text-white";
-      default:
-        return "text-gray-500";
     }
   };
 

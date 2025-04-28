@@ -13,11 +13,9 @@ export const MessageAuthor = ({ children }: MessageAuthorProps) => {
   const getAuthorStyle = () => {
     switch (variant) {
       case "client":
-        return "text-white font-semibold";
+        return "text-white font-sans font-semibold";
       case "server":
-        return "text-white font-semibold text-xs uppercase";
-      default:
-        return "text-gray-500";
+        return "text-white font-sans font-semibold text-xs uppercase";
     }
   };
 
@@ -26,7 +24,7 @@ export const MessageAuthor = ({ children }: MessageAuthorProps) => {
       <div className="flex gap-1 items-center pr-2">
         {variant === "server" && <ShieldCheckIcon />}
         {variant === "client" && <UserCircleIcon />}
-        {children}
+        <div className="self-baseline-last">{children}</div>
       </div>
     </div>
   );

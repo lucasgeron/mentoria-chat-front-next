@@ -40,7 +40,7 @@ export const useChannelActions = () => {
       case 'RESET_NAME':
         deleteCookie("author");
         deleteCookie("skipDialogs");
-        router.push("/channels");
+        window.location.reload(); // We dont use router here to avoid caching states
         toast.success("Name reset successfully");
       default:
         break;

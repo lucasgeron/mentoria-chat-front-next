@@ -14,8 +14,6 @@ export const MessageContent = ({ children }: MessageContentProps) => {
         return "text-white text-base";
       case "server":
         return "text-white text-base";
-      default:
-        return "text-gray-500";
     }
   };
 
