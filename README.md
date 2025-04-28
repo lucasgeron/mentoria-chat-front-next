@@ -52,3 +52,4 @@ Add Custom Colors to Tags ► Update the UI to make Channels have the background
 Add List of Users in Room
 Add Validation for unique usernames subscriptions by room (avoid 2 users with the same name in the same room)
 Customize the UI to sent messages be displayed on right, and received messages on left (same as WhatsApp/Discord/Others)
+Add Priority to ActionsMenu
