@@ -43,12 +43,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ✅Add Filter to Channels by Tags
 ✅Add Save Name for next time
 ✅Add Filter to Channels by Name
+✅Add Types to Messages (Server | Client )
+✅ Add Random avatar to subscribers
+✅ Add VerifiedBadge avatar to Server
 Add Filter to Channels by Number of users
 Add Random color to usernames (needs to be unique for each user, does not require to be the same across the users) | REVIEW: Change this to a user setting.
-Add Colors to Tags
-Update the UI to make Channels have the background color of the tag
-Add Random avatar to subscribers
-Add Types to Messages (ServerInfo | Default )
+Add Custom Colors to Tags ► Update the UI to make Channels have the background color of the tag
 Add List of Users in Room
 Add Validation for unique usernames subscriptions by room (avoid 2 users with the same name in the same room)
 Customize the UI to sent messages be displayed on right, and received messages on left (same as WhatsApp/Discord/Others)
