@@ -1,8 +1,9 @@
 export type Message = { 
+  type: 'Message'
   id: number
   content: string
   author: string
-  channel_id: number
-  sent_at: string
+  roomId: number
+  sentAt: string
   source: 'server' | 'client'
 }
