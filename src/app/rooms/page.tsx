@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { RoomList } from "./_components/RoomList";
 import { fetchRooms } from "./_lib/actions";
 

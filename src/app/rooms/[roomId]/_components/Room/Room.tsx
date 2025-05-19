@@ -66,7 +66,7 @@ export const Room = ({ author, roomId, onTotalOnlineChange = () => {} }: RoomPro
     return () => {
       subscription?.unsubscribe();
     };
-  }, [author, roomId]);
+  }, [author, roomId, onTotalOnlineChange]);
 
   return (
     <div className="flex w-full gap-2">

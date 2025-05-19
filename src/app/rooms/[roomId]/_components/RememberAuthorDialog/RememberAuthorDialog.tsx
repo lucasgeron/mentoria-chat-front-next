@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog,  DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { getCookie, setCookie } from "cookies-next"; 
 export interface RememberAuthorDialogProps {
  author: string | null;
@@ -44,7 +44,7 @@ export const RememberAuthorDialog = ({author, open, onClose}: RememberAuthorDial
         <Button className="cursor-default pointer-events-none bg-transparent h-0 m-0 p-0 focus-visible:border-none focus-visible:ring-0" onClick={() => {}} autoFocus/>
           
         <div className="flex justify-between w-full">
-          <Button variant="destructive" onClick={handleDontAskAgain}>Don't ask Again</Button>
+          <Button variant="destructive" onClick={handleDontAskAgain}>Don&apos;t ask Again</Button>
           <Button variant="default" onClick={handleRememberAuthor}>Remember</Button>
         </div>
       </DialogContent>

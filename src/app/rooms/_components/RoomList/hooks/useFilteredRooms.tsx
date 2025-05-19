@@ -1,3 +1,5 @@
+'use client'
+
 import { Room } from "@/types/Room";
 import { Tag } from "@/types/Tag";
 import { useState } from "react";

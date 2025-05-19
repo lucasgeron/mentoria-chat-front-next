@@ -1,8 +1,9 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 import { ArrowRightEndOnRectangleIcon } from "@/components/ui/icons/ArrowRightEndOnRectangleIcon";
 import { Room as RoomT } from "@/types/Room";
 import { useRouter } from "next/navigation";
-
 
 export interface RoomProps {
   room: RoomT

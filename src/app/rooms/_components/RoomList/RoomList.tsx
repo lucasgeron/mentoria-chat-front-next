@@ -1,16 +1,44 @@
-'use client';
+'use client'
 
 import { ChatBubbleBottomCnterTextIcon } from "@/components/ui/icons/ChatBubbleBottomCnterTextIcon";
 import { Room as RoomT } from "@/types/Room"
 import { Room } from "../Room";
 import { Filters } from "../Filters";
 import { useFilteredRooms } from "./hooks/useFilteredRooms";
+import { createConnection, subscribeToRooms } from "@/lib/cable";
+import { Message } from "@/types/Message";
 
 interface RoomListProps {
   rooms: RoomT[]
 }
 
 export const RoomList = ({ rooms }: RoomListProps) => { 
+
+    const handleOnConnected = () => {
+      console.log('Connected to rooms channel');
+    }
+    const handleOnDisconnected = () => {
+      console.log('Disconnected from rooms channel');
+    }
+
+    const handleReceived = () => {
+      console.log('Received data');
+    }
+
+    const onSubscriptionRejected = (message?: Omit<Message, "id">) => {
+      console.log('Subscription rejected', message);
+    }
+
+
+   createConnection();
+   const subscription = subscribeToRooms({
+    onReceived: handleReceived,
+    onConnected: handleOnConnected,
+    onDisconnected: handleOnDisconnected,
+    onRejected: onSubscriptionRejected,
+  })
+
+  console.log('subscription', subscription);
 
   const {filteredRooms, filteredTags, handleFilterChange } = useFilteredRooms(rooms);
 

@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from "@/components/ui/button"
 import { MagnifyingGlassIcon } from "@/components/ui/icons/MagnifyingGlassIcon";
 import { Tag } from "@/types/Tag";
