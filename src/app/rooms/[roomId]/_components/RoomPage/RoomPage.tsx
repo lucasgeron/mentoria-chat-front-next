@@ -1,6 +1,5 @@
 'use client';
 
-
 import { ChatBubbleBottomCnterTextIcon } from "@/components/ui/icons/ChatBubbleBottomCnterTextIcon";
 import { Lobby } from "@/app/rooms/[roomId]/_components/Lobby";
 import { Room } from "../Room";

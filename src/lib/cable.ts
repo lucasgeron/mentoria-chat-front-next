@@ -18,7 +18,7 @@ export const subscribeToRooms = ({
   onConnected = () => {},
   onDisconnected = () => {}
 }: {
-  onReceived?: () => void,
+  onReceived?: (data: any) => void,
   onRejected?: () => void,
   onConnected?: () => void,
   onDisconnected?: () => void
@@ -42,8 +42,8 @@ export const subscribeToRooms = ({
         onRejected();
         console.error('Subscription to rooms channel was rejected.');
       },
-      received() {
-        onReceived();
+      received(data: any) {
+        onReceived(data);
       },
     }
   );
