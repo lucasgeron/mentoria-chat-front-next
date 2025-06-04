@@ -8,6 +8,7 @@ import { useFilteredRooms } from "./hooks/useFilteredRooms";
 import { createConnection, subscribeToRooms } from "@/lib/cable";
 import { Message } from "@/types/Message";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface RoomListProps {
   rooms: RoomT[]
@@ -18,6 +19,7 @@ export const RoomList = ({ rooms }: RoomListProps) => {
   const [loading, setLoading] = useState(true);
 
   const handleOnConnected = () => {
+    toast.success(`Connected to rooms channel!`);
     console.log('Connected to rooms channel');
     // if we set the setLoading to false here, it will be set to false immediately after connection, but
     // the data might not be ready yet, so we will see the empty state for a moment, and then the data will appear
@@ -29,7 +31,6 @@ export const RoomList = ({ rooms }: RoomListProps) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleReceived = (data: any) => {
-    
     if (data && data.rooms) {
       setRoomDetails(data.rooms);
     }
@@ -69,7 +70,14 @@ export const RoomList = ({ rooms }: RoomListProps) => {
     <div className="p-8 ">
       <h1 className="text-2xl font-bold mb-4 flex items-center gap-2 ">
         <ChatBubbleBottomCnterTextIcon /> Rooms List
+        {loading && (
+          <div className="bg-gray-800 px-2 rounded-lg inline-flex py-1 items-center text-sm  gap-2 ">
+            <span className="w-4 h-4 rounded-full border-2 border-t-2 border-gray-400 border-t-blue-500 animate-spin"></span>
+            <p className="font-semibold">Connecting...</p>
+          </div>
+        )}
       </h1>
+
 
       <Filters onFilterChange={handleFilterChange} tags={filteredTags} />
     
