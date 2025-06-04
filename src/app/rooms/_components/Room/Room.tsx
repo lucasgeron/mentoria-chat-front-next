@@ -8,10 +8,15 @@ import TimeAgo from 'react-timeago';
 
 export interface RoomProps {
   room: RoomT;
-  details?: import("../RoomList/hooks/useRoomDetails").RoomDetail | null;
+  details?: {
+    online: number;
+    messages_count: number;
+    last_message_at: string;
+  };
+  loading?: boolean;
 }
 
-export const Room = ({ room, details }: RoomProps) => { 
+export const Room = ({ room, details, loading }: RoomProps) => { 
   const router = useRouter();
   const { name, max_users } = room;
   const tagName = room.tag.name;
@@ -31,21 +36,46 @@ export const Room = ({ room, details }: RoomProps) => {
             <p className="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">
               {tagName}
             </p>
-            <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
-              Messages: <span className="font-bold">{messagesCount}</span>
-            </p>
-            <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
-              Last Message: 
-              <span className="font-bold">
-                {details?.last_message_at 
-                  ?<TimeAgo date={details?.last_message_at} />
-                  : "☹️ no messages yet."
-                }
-              </span>
-            </p>
-            <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
-              Online: <span className="font-bold">{onlineCount} of {max_users}</span>
-            </p>
+
+            {loading && (
+              <>
+               <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
+                Messages: <span className="font-bold animate-pulse bg-gray-500 px-2 w-6 rounded-full" />
+              </p>
+
+              <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
+                Last Message: <span className="font-bold animate-pulse bg-gray-500 px-2 w-16 rounded-full" />
+              </p>
+
+              <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
+                Online: <span className="font-bold animate-pulse bg-gray-500 px-2 w-6 rounded-full" /><span className="font-bold"> of {max_users}</span>
+              </p>
+              </>
+
+            )}
+
+            {!loading && (
+              <>
+              <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
+                Messages: <span className="font-bold">{messagesCount}</span>
+              </p>
+              
+              
+              <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
+                Last Message: 
+                <span className="font-bold">
+                  {details?.last_message_at 
+                    ?<TimeAgo date={details?.last_message_at} />
+                    : "☹️ no messages yet."
+                  }
+                </span>
+              </p>
+
+              <p className="text-xs bg-gray-700 text-white px-2 py-1 rounded-full flex gap-1">
+                Online: <span className="font-bold">{onlineCount} of {max_users}</span>
+              </p>
+            </>
+            )}
           </div>
         </div>
         <Button variant={"outline"} onClick={() => router.push(`/rooms/${room.id}`)} >
